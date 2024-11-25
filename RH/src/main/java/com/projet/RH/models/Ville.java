@@ -1,7 +1,6 @@
 package com.projet.RH.models;
 
 import jakarta.persistence.*;
-
 import java.util.Set;
 
 @Entity
@@ -10,19 +9,17 @@ public class Ville {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Identifiant unique pour la ville
+    private Long id;
 
     @Column(nullable = false)
-    private String ville; // Nom de la ville
+    private String ville;
 
     @Column(nullable = false, length = 10)
-    private String codePostal; // Code postal associé à la ville
+    private String codePostal;
 
-    // Relation avec les utilisateurs (si applicable dans votre MCD)
     @OneToMany(mappedBy = "ville", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Utilisateur> utilisateurs; // Liste des utilisateurs habitant dans cette ville
+    private Set<Utilisateur> utilisateurs;
 
-    // Constructeurs
     public Ville() {}
 
     public Ville(String ville, String codePostal) {
@@ -63,4 +60,3 @@ public class Ville {
         this.utilisateurs = utilisateurs;
     }
 }
-
