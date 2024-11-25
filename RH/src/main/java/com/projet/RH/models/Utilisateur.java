@@ -1,10 +1,17 @@
 package com.projet.RH.models;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+
 
 @Entity
 @Table(name="utilisateurs")
@@ -26,7 +33,24 @@ public class Utilisateur {
 	
 	private String adresse;
 	
+	 @ManyToMany
+	    @JoinTable(
+	        name = "users_roles", 
+	        joinColumns = @JoinColumn(name = "role_id"), 
+	        inverseJoinColumns = @JoinColumn(name = "utilisateur_id")
+	    )
+	 
+	 private Set<Role> courses = new HashSet<>();
+	
 		
+	public Set<Role> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(Set<Role> courses) {
+		this.courses = courses;
+	}
+
 	public Utilisateur() {
 		// TODO Auto-generated constructor stub
 	}

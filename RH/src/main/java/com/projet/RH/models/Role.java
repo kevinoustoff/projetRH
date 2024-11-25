@@ -34,4 +34,5 @@ public class Role {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+	
 }
