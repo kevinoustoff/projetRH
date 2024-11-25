@@ -3,58 +3,37 @@ package com.projet.RH.models;
 import java.util.HashSet;
 import java.util.Set;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+
+import jakarta.persistence.*;
 
 
 @Entity
 @Table(name="utilisateurs")
 public class Utilisateur {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String nom;
-	
+
 	private String prenoms;
-	
+
 	private String password;
-	
+
 	private String email;
-	
+
 	private String telephone;
-	
+
 	private String adresse;
-	
-	 @ManyToMany
-	    @JoinTable(
-	        name = "users_roles", 
-	        joinColumns = @JoinColumn(name = "role_id"), 
-	        inverseJoinColumns = @JoinColumn(name = "utilisateur_id")
-	    )
-	 
-	 private Set<Role> courses = new HashSet<>();
-	
-		
-	public Set<Role> getCourses() {
-		return courses;
-	}
 
-	public void setCourses(Set<Role> courses) {
-		this.courses = courses;
-	}
+	@ManyToOne
+	@JoinColumn(name = "ville_id", nullable = true) // Colonne de jointure vers la table Ville
+	private Ville ville; // Référence à la ville de l'utilisateur
 
-	public Utilisateur() {
-		// TODO Auto-generated constructor stub
-	}
+	public Utilisateur() {}
 
+	// Getters et Setters
 	public Long getId() {
 		return id;
 	}
@@ -81,6 +60,14 @@ public class Utilisateur {
 
 	public String getAdresse() {
 		return adresse;
+	}
+
+	public Ville getVille() {
+		return ville;
+	}
+
+	public void setVille(Ville ville) {
+		this.ville = ville;
 	}
 
 	public void setId(Long id) {
@@ -110,5 +97,4 @@ public class Utilisateur {
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
-	
 }
