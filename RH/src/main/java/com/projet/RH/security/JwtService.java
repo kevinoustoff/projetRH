@@ -1,4 +1,4 @@
-package edu.miage.springboot.security;
+package com.projet.RH.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

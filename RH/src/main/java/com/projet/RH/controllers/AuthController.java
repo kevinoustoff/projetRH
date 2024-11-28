@@ -1,8 +1,8 @@
-package edu.miage.springboot.web.rest;
+package com.projet.RH.controllers;
 
-import edu.miage.springboot.security.JwtService;
-import edu.miage.springboot.web.dtos.AuthRequestDTO;
-import edu.miage.springboot.web.dtos.AuthResponseDTO;
+import com.projet.RH.dtos.AuthRequestDTO;
+import com.projet.RH.dtos.AuthResponseDTO;
+import com.projet.RH.security.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.projet.RH.security.JwtService;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -20,7 +20,7 @@ public class AuthController {
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
-    private JwtService jwtService;
+    JwtService jwtService;
 
     @PostMapping("/login")
     public AuthResponseDTO AuthenticateAndGetToken(@RequestBody AuthRequestDTO authRequestDTO) {

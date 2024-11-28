@@ -18,6 +18,8 @@ public class Utilisateur {
 	private String nom;
 
 	private String prenoms;
+	
+	private String username;
 
 	private String password;
 
@@ -29,7 +31,11 @@ public class Utilisateur {
 
 	@ManyToOne
 	@JoinColumn(name = "ville_id", nullable = true) // Colonne de jointure vers la table Ville
-	private Ville ville; // Référence à la ville de l'utilisateur
+	private Ville ville; // Référence à la ville de 
+
+	@ManyToMany(fetch = FetchType.EAGER)
+    private Set<Role> roles = new HashSet<>();
+
 
 	public Utilisateur() {}
 
@@ -97,4 +103,20 @@ public class Utilisateur {
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
 }

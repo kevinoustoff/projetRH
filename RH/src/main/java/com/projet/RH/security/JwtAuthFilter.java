@@ -1,6 +1,4 @@
-package edu.miage.springboot.security;
-
-import edu.miage.springboot.services.impl.AuthUserDetailsService;
+package com.projet.RH.security;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+
+import com.projet.RH.services.AuthUserDetailsService;
 
 import java.io.IOException;
 

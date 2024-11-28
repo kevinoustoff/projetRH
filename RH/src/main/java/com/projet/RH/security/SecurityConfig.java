@@ -1,6 +1,5 @@
-package edu.miage.springboot.security;
-
-import edu.miage.springboot.services.impl.AuthUserDetailsService;
+package com.projet.RH.security;
+import com.projet.RH.services.AuthUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
