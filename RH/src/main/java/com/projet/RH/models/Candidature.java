@@ -9,27 +9,25 @@ public class Candidature {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Identifiant unique de la candidature
+    private Long id;
 
     @Column(nullable = false)
     private LocalDate dateCandidature; // Date de la candidature
 
     @Column(columnDefinition = "TEXT")
-    private String lettreMotivation; // Lettre de motivation du candidat
+    private String lettreMotivation; // Lettre de motivation
 
     @Column(nullable = false)
-    private String statut; // Statut de la candidature (Ex: "En attente", "Acceptée", "Refusée")
+    private String statut; // Statut de la candidature (ex: "en attente", "acceptée", "refusée")
 
-    // Relation avec l'entité Utilisateur (le candidat qui postule)
     @ManyToOne
     @JoinColumn(name = "utilisateur_id", nullable = false)
-    private Utilisateur utilisateur;
+    private Utilisateur utilisateur; // L'utilisateur qui a postulé
 
-    // Relation avec l'entité offreEmploi (l'offre pour laquelle on postule)
     @ManyToOne
     @JoinColumn(name = "offre_id", nullable = false)
-    private OffreEmploi offreEmploi;
-
+    private OffreEmploi offreEmploi; // L'offre pour laquelle on postule
+    
     // Constructeurs
     public Candidature() {}
 
